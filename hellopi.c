@@ -17,6 +17,8 @@ int main(void)
 {
 	printf("\nHello World!\n\nProgramming in C is fun. \nProgramming C on a Raspberry Pi is even more fun \n\n");
 
+	printf("This code will be saved in a github repository.\n\n");
+
 	return 0;
 }
 

@@ -1,4 +1,4 @@
-
+\
 
 /*
 Intro to C/C++ Programming
@@ -30,7 +30,7 @@ int main(void)
 	
 	degC  = (degF  - (float) 32) /1.8;
 
-	printf("\nThe Temperature in Degrees C is: %g\n\n", degC);
+	printf("\nThe Temperature in Degrees C is: %g C\n\n", degC);
 
 	return 0;
 

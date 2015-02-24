@@ -1,0 +1,65 @@
+/*
+Intro to C/C++ Programming
+Spring 2015
+INFO1-CE9008-01
+
+Week One
+Programming Homework
+
+Excercises 2 - 6
+*/
+
+//Excercise 2
+
+/*
+Which of the following are invalid variable names? Why?
+
+Int <-- valid thougha confusing name because it is similar to a reserved word
+char <-- Invalid because it is a reserved word
+6_05 <--- invalid because it starts with a number
+Calloc <--Valid variable name containing only letters and numbers between 0 and 9 and starting with a letter, containing no spaces
+Xx <--Valid
+alpha_beta_routine <--- valid
+floating <-- valid though confusing because similar to rewserved word float
+_1312 <-- valid
+z <-- valid
+ReInitialize <-- valid
+_ <-- valid but not a great variable choice because it is very ambiguous
+A$ <-- invalid becaquse $ is not a character accepted in the variable name
+
+*/
+
+//Excercise 3
+
+/*
+Which of the following are invalid constants? Why?
+
+123.456 <-- valid floating point constant
+0x10.5 <-- invalid, does not contain a P or p
+0X0G1 <-- inalid hexadecimal constant; exceeds the 0 - F range (no such thing as G)
+0001 <-- valid int
+0xFFFF <-- valid hex
+123L <--  valid long int
+0Xab05 <-- valid hex
+0L <-- valid long int
+-527.25 <-- valid signed float
+123.5e2 <-- valid exponential float
+.0001 <-- valid float
++12 <-- valid signed int
+98.6F <-- invalid. hex  needs to be specified with a 0x or 0X, and floating points cannot contain mixed decimal and hex
+98.7U <--invalid. floats are always signed.
+17777s <-- invalid, s is not a valid modifier for a datatype
+0996 <-- Valid int
+-12E-12 <-- valid float
+07777 <-- valid int
+1234uL <-- valid unsigned long int
+1.2Fe-7 <-- valid flaoting point
+15,000 <-- invalid, commas are not valit floating point or int seperators
+1.234L <-- valid long float
+197u <-- valid unsigned int
+100U <- valid unsigned int
+0XACDEFL  <-- valid hex long int
+0xabcu <-- valid unsigned hex int
++123 < -- valid signed int
+*/
+

@@ -38,3 +38,19 @@ int main(void)
 
 	return 0;
 }//end main
+
+/*Output
+
+Please enter two integers:
+integer 1 = 12
+
+integer 2 =6
+The first number is evenly divisible by the second
+pi@raspberrypi ~/Programs/week3 $ ./ifdivide
+Please enter two integers:
+integer 1 = 7
+
+integer 2 =3
+The first number is not evenly divisible by the second.
+
+*/

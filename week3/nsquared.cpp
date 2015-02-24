@@ -52,3 +52,21 @@ int main(void)
 
 return 0;
 }//end main
+
+/* Program Output
+
+Table of Squares
+Value of N      |       Value of N^2
+----------------------
+N = 1   |       N^2= 1
+N = 2   |       N^2= 4
+N = 3   |       N^2= 9
+N = 4   |       N^2= 16
+N = 5   |       N^2= 25
+N = 6   |       N^2= 36
+N = 7   |       N^2= 49
+N = 8   |       N^2= 64
+N = 9   |       N^2= 81
+N = 10  |       N^2= 100
+
+*/

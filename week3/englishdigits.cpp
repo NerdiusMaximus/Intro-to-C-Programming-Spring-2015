@@ -21,11 +21,40 @@ Chapter 6 Excercises 2, 3, 6
 
 int main(void)
 {
-	int number,numDigits;
-	printf("Please enter an integer to be converted:\n ");
+	int number,numDigits=0;
+	int digit;
+	unsigned int temp;
+	printf("Please enter an integer to be converted:\n");
 	scanf("%i", &number);
 
-	numDigits = 0;
+	//Reverse the order of the number's digits
+	temp = number;
+	printf("number = %i\ttemp = %i\n\n",number,temp);
+	//loop to count number of digits
+	do{
+		temp /= 10;
+		numDigits++;
+	}while(temp!=0);//end do while
+
+	printf("After the digit count, the numbers are:\nnumber = %i\ttemp = %i\tnumDigits = %i\n\n",number,temp,numDigits);
+	//Loop to reverse the digits and accumulate the reversed number in temp
+	temp = number;
+	printf("Before entering the reverse script, the numbers are:\n\nnumber = %i\ttemp = %i\tnumDigits = %i\n\n",number,temp,numDigits);
+	temp = 0;
+	for(int i = 0;i<numDigits;++i){
+		temp=temp*10;
+		digit = number%10;
+		if(i==(numDigits-1))
+			if(digit == 0)
+				break;
+			//end if
+		//end if
+		temp = temp + digit;
+		number = number/10;
+	}//end for
+
+	//loop for converting the digits into words
+	number = temp;
 	do{
 		numDigits++;
 		switch (number%10)
@@ -60,7 +89,7 @@ int main(void)
 			case 9:
 				printf("Nine\t");
 			default:
-				;
+				printf("\n");
 				break;
 		}//end switch
 		number = number/10; //shift right
@@ -70,3 +99,14 @@ int main(void)
 
 	return 0;
 }
+
+/*Output
+After the digit count, the numbers are:
+number = 12345  temp = 0        numDigits = 5
+
+Before entering the reverse script, the numbers are:
+
+number = 12345  temp = 12345    numDigits = 5
+
+One     Two     Three   Four    Five
+*/

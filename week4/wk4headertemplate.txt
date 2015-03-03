@@ -1,0 +1,17 @@
+/*
+Intro to C/C++ Programming
+Spring 2015
+INFO1-9008-01
+
+Week One
+Programming Homework
+
+Author: Michael T. Lowry
+Date: 03/02/2015
+
+These are the program examples for Arrays and Strings
+
+Chapter 7 Excercises 4, 5, and 6
+Chapter 10 Excercises 3 and 6
+
+*/

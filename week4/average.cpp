@@ -28,7 +28,7 @@ int main(void)
 
 	for(i=0;i<10;++i)
 	{
-		printf("Please enter element %i of 10: \n",i);
+		printf("Please enter element %i of 10: \n",i+1);
 		scanf("%f",&temp);
 		numbers[i] = temp;
 		printf("The number you entered is: %f\n",numbers[i]);

@@ -81,8 +81,38 @@ int stringLength(char *string)
 
 int numSpace(char *string)
 {
+	//count is the array index
+	int count = 0;
+	//spaceCount accumulates the number of spaces
+	int spaceCount = 0;
 	
+	while((string[count])!='\0')	
+	{//start a while loop that counts elements
+	
+		//if a space is read
+		if(string[count]==' ')
+		{
+			//increment the space counter
+			++spaceCount;
+		}
+		++count;
+	}//end while
+	
+	return spaceCount;
 }//end numSpace
 	
+/*
+To be or not to be - that is the question: Whether 'tis nobler in the mind to su
+ffer the slings and arrows of outrageous fortune, or to take arms against a sea
+of troubles and, by opposing, end them. To die, to sleep
 
+string length is 216 characters
+
+The number of spaces in the string is 43
+
+
+--------------------------------
+Process exited after 0.06597 seconds with return value 0
+Press any key to continue . . .
+*/
 

@@ -16,7 +16,9 @@ Rewrite the compareStrings function from chapter 10 to use character pointers in
 */
 
 // Dictionary lookup program
+
 #include <stdio.h>
+
 struct entry
 {
 	char word[15];
@@ -27,8 +29,9 @@ struct entry
 int compareStrings (const char s1[], const char s2[])
 {
 	int i = 0, answer;
-	while ( s1[i] == s2[i] && s1[i] != '\0'&& s2[i] != '\0' ){
 	
+	while ( s1[i] == s2[i] && s1[i] != '\0'&& s2[i] != '\0' )
+	{
 		++i;
 		if ( s1[i] < s2[i] )
 			answer = -1; /* s1 < s2 */
@@ -37,7 +40,7 @@ int compareStrings (const char s1[], const char s2[])
 		else
 			answer = 1; /* s1 > s2 */
 	}//end while
-		
+
 	return answer;
 }//end compareStrings
 
@@ -46,19 +49,28 @@ int lookup (const struct entry dictionary[], const char search[],
 const int entries)
 {
 	int low = 0;
-	int high = entries - 1;
+	int high = entries - 1; //end of the char array we are searching for
 	int mid, result;
+	
+	//function prototype
 	int compareStrings (const char s1[], const char s2[]);
+	
+	//Binary Search
 	while ( low <= high )
 	{
 		mid = (low + high) / 2;
+		
 		result = compareStrings (dictionary[mid].word, search);
+		
 		if ( result == -1 )
 			low = mid + 1;
 		else if ( result == 1 )
 			high = mid - 1;
+		else if(result == 0)
+			return mid; /* found it */
 		else
-	return mid; /* found it */
+			return -1;	
+	
 	}//end while
 	
 	return -1; /* not found */
@@ -67,7 +79,7 @@ const int entries)
 int main (void)
 {
 	const struct entry dictionary[100] =
-	{ { "aardvark", "a burrowing African mammal" },
+	{ { "aardvark", "a burrowing African mammal"},
 	{ "abyss", "a bottomless pit" },
 	{ "acumen", "mentally sharp; keen" },
 	{ "addle", "to become confused" },
@@ -80,16 +92,25 @@ int main (void)
 	
 	int entries = 10;
 	char word[15];
+	
 	int entry;
+	
+	//function prototype
 	int lookup (const struct entry dictionary[], const char search[],
 	const int entries);
+	
 	printf ("Enter word: ");
 	scanf ("%14s", word);
+	
 	entry = lookup (dictionary, word, entries);
-	if ( entry != -1 )
+	
+	if ( entry != -1 ){
 		printf ("%s\n", dictionary[entry].definition);
+	}
 	else
+	{
 		printf ("Sorry, the word %s is not in my dictionary.\n", word);
+	}
 return 0;
 
 }//end main

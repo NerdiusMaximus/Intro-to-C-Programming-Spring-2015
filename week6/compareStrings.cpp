@@ -53,7 +53,7 @@ const int entries)
 	int mid, result;
 	
 	//function prototype
-	int compareStrings (const char s1[], const char s2[]);
+	int compareStrings (const char *s1[], const char *s2[]);
 	
 	//Binary Search
 	while ( low <= high )
@@ -69,7 +69,7 @@ const int entries)
 		else if(result == 0)
 			return mid; /* found it */
 		else
-			return -1;	
+			return -1;
 	
 	}//end while
 	
@@ -111,8 +111,6 @@ int main (void)
 	{
 		printf ("Sorry, the word %s is not in my dictionary.\n", word);
 	}
+	
 return 0;
-
 }//end main
-
-

@@ -8,7 +8,7 @@ int main(void)
 {
 	//define two string literals
 	char word1[]="good";
-	char word2[]="bad";
+	char word2[]="goo";
 	
 	//define pointers of type char to each of the string literals
 	char *word1_ptr = &word1[0];
@@ -36,30 +36,31 @@ int main(void)
 int compareStrings (char *string1, char *string2)
 {
 	//declare a variable to hold the answer
-	int index;
+	int index,flag;
 	printf("Entering the compareStrings Function...\n\n");
 	printf("The first word inside function: %s and %s\n\n",string1,string2);
 	
-	while(string1[index] != '\0' && string2[index] != '\0')
+	while(string1[index] == string2[index] && string1[index] != '\0' && string2[index] != '\0')
 	{
 		//print debug text
 		printf("Entering the loop...\n\n");
-	
-		if(string1[index] == string2[index])
+		
+		++index;
+		flag = 0;
+		
+		if(string1[index]==string2[index])
 		{
-			printf("index: %i\t%c\t%c\t\n\n",index,string1[index],string2[index]);
-			index++;
-		}
+			flag = 1;//flag is 1 when words are the same
+		}//end if
 		else
 		{
-			printf("index: %i\t%c\t%c\t\n\n",index,string1[index],string2[index]);
-			return 0;
-		}
+			flag = 0;//flag is 0 when the words are not the same
+		}//end else
 		
 	}//end while
 	printf("Exiting loop...\n\n");
 	
-	return 1;
+	return flag;
 
 }//end compareStrings
 

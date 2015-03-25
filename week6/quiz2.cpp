@@ -61,8 +61,7 @@ int main(void)
 	//count the spaces in the string
 	spaces = numSpace(prose_ptr);
 	
-	printf(
-	"The number of spaces in the string is %i\n\n",spaces);
+	printf("The number of spaces in the string is %i\n\n",spaces);
 		
 	return 0;
 }//end main

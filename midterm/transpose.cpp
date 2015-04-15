@@ -53,24 +53,25 @@ int main(void)
 	printf("\n\n");
 	
 	//transpose the array
-	for(int i=0;i<8;++i)
+	for(int i=0;i<10;++i)
 	{
-		for(int j = 0;j<10;++j)
+		for(int j = 0;j<8;++j)
 		{
 			//exchange the elements of rows and columns
 			B[i][j]=A[j][i];
 		}//end for (j)
+		
 	}//end for (i)
 	
 	//Print out Array B
 	printf("The transposed array is:\n\n");
-	for(int i=0;i<8;++i)
+	for(int i=0;i<10;++i)
 	{
-		for(int j = 0;j<10;++j)
+		for(int j=0;j<8;++j)
 		{
 			printf("%i\t",B[i][j]);
 		}
-		printf("\n");
+		printf("\n\n");
 	}
 	printf("\n\n");
 	
@@ -102,26 +103,28 @@ The right column shifted array is:
 
 The transposed array is:
 
-1       10      9       8       7       6       5       4       2       1
+1       10      9       8       7       6       5       4
 
-2       1       10      9       8       7       6       5       3       2
+2       1       10      9       8       7       6       5
 
-3       2       1       10      9       8       7       6       4       3
+3       2       1       10      9       8       7       6
 
-4       3       2       1       10      9       8       7       5       4
+4       3       2       1       10      9       8       7
 
-5       4       3       2       1       10      9       8       6       5
+5       4       3       2       1       10      9       8
 
-6       5       4       3       2       1       10      9       7       6
+6       5       4       3       2       1       10      9
 
-7       6       5       4       3       2       1       10      8       7
+7       6       5       4       3       2       1       10
 
-8       7       6       5       4       3       2       1       4       2
+8       7       6       5       4       3       2       1
 
+9       8       7       6       5       4       3       2
 
+10      9       8       7       6       5       4       3
 
 
 --------------------------------
-Process exited after 0.03435 seconds with return value 0
+Process exited after 0.0675 seconds with return value 0
 Press any key to continue . . .
 */

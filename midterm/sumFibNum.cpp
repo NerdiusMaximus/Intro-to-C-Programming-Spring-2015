@@ -34,10 +34,12 @@ int main(void)
     printf("Starting Main Method...\n\n");
     #endif
     
+    //declare an array and intialize to zero
     int fibArray[20]={0};
-    int *fibArray_ptr = &fibArray[0];
+    //declaring a pointer to that array
+    //int *fibArray_ptr = &fibArray[0];
     
-	fib(fibArray_ptr,size);
+	fib(&fibArray[0],size);
 	
 	#ifdef DEBUG
 	printf("\nThe array in the main method reads:\n");
@@ -49,7 +51,7 @@ int main(void)
 	#endif
 	
 	//calculate the sum
-	fibSum = sum(fibArray_ptr, size);
+	fibSum = sum(&fibArray[0], size);
 
     printf("The sum of the fibonacci array of size %i is %i\n\n",size,fibSum);
     
@@ -60,28 +62,29 @@ int main(void)
 int sum(int *fib, int n)
 {
 	//initialize sum
-	int sum = 0;
+	int x = 0;
 	
 	//for loop to calculate the sum
     for(int i=0; i<n; ++i)
     {
     	//add the currenty value of the array to sum
-    	sum += fib[i];
+    	x += fib[i];
     }//end for
     
-    return sum;
+    return x;
 }
 
 //Begin method for generating fibonacci numbers
 void fib(int *fibArray, int n)
+// fib(array_ptr,size) -> int *fibarray = array_ptr; int n = size
 {
- 	 //set thew first two elements of the fib array
+ 	 //set the first two elements of the fib array
  	 fibArray[0] = 0;
  	 fibArray[1] = 1;
  	 #ifdef DEBUG
  	 printf("The array reads:\n %i\t%i\t",fibArray[0],fibArray[1]);
  	 #endif
-     for(int i=2; i<n; ++i)
+    for(int i=2; i<n; ++i)
     {
      		 fibArray[i] = fibArray[i-1]+ fibArray[i-2];
      		 #ifdef DEBUG

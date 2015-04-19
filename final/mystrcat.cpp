@@ -27,7 +27,6 @@ Requirements:
 */
 
 //includes
-//#include <stdio.h>
 #include <string.h>
 #include <iostream>
 #include <cstdio>
@@ -43,19 +42,36 @@ char* string_cat(char* s1, char*s2);
 int main(void)
 {
 	//declare variables
-	char s1[80] = {0};
-	char s2[40] = {0};
+	char s1[80];
+	char s2[40];
 	char buffer= 1;
 	char s_result[80] = {0};
+	int flag = 0;
 	
 	//enter a true loop
 	while(1)
 	{
+		//reset the strings
+		s1[80] = {0};
+		s2[40] = {0};
+		s_result[80]={0};
+		buffer = 1;
+		
 		//prompt the user to input strings
 		fputs("\nPlease enter two strings to concatenate:\nString 1:",stdout);
 		
 		//get user input of string1 to stdin
 		fgets(&s1[0],81,stdin);
+		
+		//check that the string 1 input is not too big
+		if(strlen(s1)>79)
+		{
+			printf("Your first string is too long. Please begin again\n\n");
+			flag = 1;
+			s1[80] = {0};
+			s2[40] = {0};
+			continue;
+		}//end if
 		
 		//debug print statements
 		#ifdef DEBUG
@@ -64,6 +80,16 @@ int main(void)
 		
 		printf("\nString 2: ");
 		fgets(&s2[0],41,stdin);
+		
+		//check that the string 2 input is not too big
+		if(strlen(s2)>39)
+		{
+			printf("Your second string is too long. Please begin again\n\n");
+			flag = 2;
+			s1[80] = {0};
+			s2[40] = {0};
+			continue;
+		}//end if
 
 		//debug print statements
 		#ifdef DEBUG
@@ -71,26 +97,26 @@ int main(void)
 		#endif
 		
 		//invoke the function
-		string_cat(&s1[0],&s2[0]);
-		
-		#ifdef DEBUG
-		printf("\nResulting s_result: %s",s_result);
-		#endif
-		
-		if(s_result == NULL)
+		if(string_cat(&s1[0],&s2[0])!= NULL)
 		{
-			printf("\nStrings too long.\nPlease select different strings.\n\n");
-			continue;
+			//print the resulting string
+			printf("\nThe result string is:\n\n%s",s1);
+			flag = 0;
 		}//end if
-		
-		//print the resulting string
-		printf("\nThe result string is:\n\n%s",s1);
-		
+		else
+		{
+			printf("The strings were too long once they were concatenated.\n\n");
+			flag = 3;
+		}//end else
+	
 		//prompt the user to decide continue or not
 		printf("Enter new strings? Y/N (0): ");
 		fgets(&buffer,80,stdin);
 		
+		#ifdef DEBUG
 		printf("%c",buffer);
+		#endif
+		
 		//if the result is '0'
 		if(buffer == '0')
 		{
@@ -118,7 +144,6 @@ char* string_cat(char* s1, char*s2)
 	//check condition first
 	if(s1_len+s2_len > 80) //if the sum of the strings is over 80
 	{
-		printf("The strings are too long. Please choose shorter strings.");
 		return NULL;
 	}//end if
 	
@@ -134,65 +159,56 @@ char* string_cat(char* s1, char*s2)
 
 /* output
 
+
 Please enter two strings to concatenate:
-String 1:This shit is bananas
+String 1:one two three four five siz seven eight nine ten eleven twelve thirteen
+ fourteen
 
 The string you entered was:
-This shit is bananas
+one two three four five siz seven eight nine ten eleven twelve thirteen fourteen
 
-String 2: b-a-n-a-n-a-s
-
+String 2:
 The string you entered was:
-b-a-n-a-n-a-s
 
+The strings are too long. Please choose shorter strings.
 Resulting s_result:
 The result string is:
 
-This shit is bananas b-a-n-a-n-a-s
-Enter new strings? Y/N (0): 0
-0
-Ending the loop...
-
-
-Loop Ended. Program complete. Goodbye!
-
---------------------------------
-Process exited after 16.49 seconds with return value 0
-Press any key to continue . . .
-
-
-Please enter two strings to concatenate:
-String 1:Lauren is
-
-The string you entered was:
-Lauren is
-
-String 2: the best girlfriend ever
-
-The string you entered was:
-the best girlfriend ever
-
-Resulting s_result:
-The result string is:
-
-Lauren is the best girlfriend ever
+one two three four five siz seven eight nine ten eleven twelve thirteen fourteen
 Enter new strings? Y/N (0): y
 y
 Please enter two strings to concatenate:
-String 1:I am happy
+String 1:seven men had seven wives, each wife has seven cats with seven lives
 
 The string you entered was:
-I am happy
+seven men had seven wives, each wife has seven cats with seven lives
 
-String 2: this program now works
+String 2: how many cats were there?
 
 The string you entered was:
-this program now works
+how many cats were there?
+The strings are too long. Please choose shorter strings.
+Resulting s_result:
+The result string is:
+
+seven men had seven wives, each wife has seven cats with seven lives
+Enter new strings? Y/N (0): y
+y
+Please enter two strings to concatenate:
+String 1:there once was a man from the sea
+
+The string you entered was:
+there once was a man from the sea
+
+String 2: who came to town.
+
+The string you entered was:
+who came to town.
 
 Resulting s_result:
 The result string is:
 
-I am happy this program now works
+there once was a man from the sea who came to town.
 Enter new strings? Y/N (0): 0
 0
 Ending the loop...
@@ -201,8 +217,7 @@ Ending the loop...
 Loop Ended. Program complete. Goodbye!
 
 --------------------------------
-Process exited after 35.05 seconds with return value 0
+Process exited after 134.2 seconds with return value 0
 Press any key to continue . . .
-
 
 */

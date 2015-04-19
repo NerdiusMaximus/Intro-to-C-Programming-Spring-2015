@@ -45,8 +45,7 @@ int main(void)
 	//declare variables
 	char s1[80] = {0};
 	char s2[40] = {0};
-	char buffer[512] = {1};
-	char* buffer_ptr = &buffer[0];
+	char buffer= 1;
 	char s_result[80] = {0};
 	
 	//enter a true loop
@@ -56,7 +55,7 @@ int main(void)
 		fputs("\nPlease enter two strings to concatenate:\nString 1:",stdout);
 		
 		//get user input of string1 to stdin
-		buffer_ptr = fgets(&s1[0],strlen(s1)+1,stdin);
+		fgets(&s1[0],81,stdin);
 		
 		//debug print statements
 		#ifdef DEBUG
@@ -64,7 +63,7 @@ int main(void)
 		#endif
 		
 		printf("\nString 2: ");
-		buffer_ptr = fgets(&s2[0],strlen(s2)+1,stdin);
+		fgets(&s2[0],41,stdin);
 
 		//debug print statements
 		#ifdef DEBUG
@@ -89,10 +88,11 @@ int main(void)
 		
 		//prompt the user to decide continue or not
 		printf("Enter new strings? Y/N (0): ");
-		buffer[0] = getchar();
+		fgets(&buffer,80,stdin);
 		
+		printf("%c",buffer);
 		//if the result is '0'
-		if(!buffer)
+		if(buffer == '0')
 		{
 			#ifdef DEBUG
 			printf("\nEnding the loop...\n\n");
@@ -123,11 +123,86 @@ char* string_cat(char* s1, char*s2)
 	}//end if
 	
 	//for each element of string one
-	for(int i=0; i<strlen(s2);++i)
+	for(int i=0; i<strlen(s2)+1;++i)
 	{
 		//append each element of string 2 to the end os string 1
-		s1[s1_len+i]= s2[i];	
+		s1[s1_len-1+i]= s2[i];	
 	}//end for
 	
 	return &s2[0];
 }//end string_cat
+
+/* output
+
+Please enter two strings to concatenate:
+String 1:This shit is bananas
+
+The string you entered was:
+This shit is bananas
+
+String 2: b-a-n-a-n-a-s
+
+The string you entered was:
+b-a-n-a-n-a-s
+
+Resulting s_result:
+The result string is:
+
+This shit is bananas b-a-n-a-n-a-s
+Enter new strings? Y/N (0): 0
+0
+Ending the loop...
+
+
+Loop Ended. Program complete. Goodbye!
+
+--------------------------------
+Process exited after 16.49 seconds with return value 0
+Press any key to continue . . .
+
+
+Please enter two strings to concatenate:
+String 1:Lauren is
+
+The string you entered was:
+Lauren is
+
+String 2: the best girlfriend ever
+
+The string you entered was:
+the best girlfriend ever
+
+Resulting s_result:
+The result string is:
+
+Lauren is the best girlfriend ever
+Enter new strings? Y/N (0): y
+y
+Please enter two strings to concatenate:
+String 1:I am happy
+
+The string you entered was:
+I am happy
+
+String 2: this program now works
+
+The string you entered was:
+this program now works
+
+Resulting s_result:
+The result string is:
+
+I am happy this program now works
+Enter new strings? Y/N (0): 0
+0
+Ending the loop...
+
+
+Loop Ended. Program complete. Goodbye!
+
+--------------------------------
+Process exited after 35.05 seconds with return value 0
+Press any key to continue . . .
+
+
+*/

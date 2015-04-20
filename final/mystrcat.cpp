@@ -33,7 +33,7 @@ Requirements:
 #include <cstdlib>
 
 //Definitions
-#define DEBUG 1
+//#define DEBUG 1
 
 //function prototypes
 char* string_cat(char* s1, char*s2);
@@ -46,19 +46,12 @@ int main(void)
 	char s2[40];
 	char buffer= 1;
 	char s_result[80] = {0};
-	int flag = 0;
 	
 	//enter a true loop
 	while(1)
 	{
-		//reset the strings
-		s1[80] = {0};
-		s2[40] = {0};
-		s_result[80]={0};
-		buffer = 1;
-		
 		//prompt the user to input strings
-		fputs("\nPlease enter two strings to concatenate:\nString 1:",stdout);
+		fputs("Please enter two strings to concatenate:\n",stdout);
 		
 		//get user input of string1 to stdin
 		fgets(&s1[0],81,stdin);
@@ -67,71 +60,47 @@ int main(void)
 		if(strlen(s1)>79)
 		{
 			printf("Your first string is too long. Please begin again\n\n");
-			flag = 1;
-			s1[80] = {0};
-			s2[40] = {0};
 			continue;
 		}//end if
 		
-		//debug print statements
-		#ifdef DEBUG
-		printf("\nThe string you entered was: \n%s",s1);
-		#endif
-		
-		printf("\nString 2: ");
 		fgets(&s2[0],41,stdin);
 		
 		//check that the string 2 input is not too big
 		if(strlen(s2)>39)
 		{
 			printf("Your second string is too long. Please begin again\n\n");
-			flag = 2;
-			s1[80] = {0};
-			s2[40] = {0};
 			continue;
 		}//end if
 
-		//debug print statements
-		#ifdef DEBUG
-		printf("\nThe string you entered was: \n%s",s2);
-		#endif
+		s_result[0] = *string_cat(&s1[0],&s2[0]);
 		
-		//invoke the function
-		if(string_cat(&s1[0],&s2[0])!= NULL)
+		if(s_result != NULL)
 		{
 			//print the resulting string
 			printf("\nThe result string is:\n\n%s",s1);
-			flag = 0;
 		}//end if
 		else
 		{
 			printf("The strings were too long once they were concatenated.\n\n");
-			flag = 3;
 		}//end else
 	
 		//prompt the user to decide continue or not
 		printf("Enter new strings? Y/N (0): ");
 		fgets(&buffer,80,stdin);
 		
-		#ifdef DEBUG
-		printf("%c",buffer);
-		#endif
-		
-		//if the result is '0'
-		if(buffer == '0')
+		//if the result is '0', 'n', or 'N'
+		if(buffer == '0' || buffer == 'n' || buffer == 'N')
 		{
-			#ifdef DEBUG
-			printf("\nEnding the loop...\n\n");
-			#endif
 			//break the loop
 			break;
 		}//end if
-		
+		printf("\n");
 	}//end while
 	
 	#ifdef DEBUG
-	printf("\nLoop Ended. Program complete. Goodbye!\n");
+	printf("\nProgram complete. Goodbye!\n");
 	#endif
+	
 	//default return
 	return 0;
 }//end main method
@@ -158,66 +127,5 @@ char* string_cat(char* s1, char*s2)
 }//end string_cat
 
 /* output
-
-
-Please enter two strings to concatenate:
-String 1:one two three four five siz seven eight nine ten eleven twelve thirteen
- fourteen
-
-The string you entered was:
-one two three four five siz seven eight nine ten eleven twelve thirteen fourteen
-
-String 2:
-The string you entered was:
-
-The strings are too long. Please choose shorter strings.
-Resulting s_result:
-The result string is:
-
-one two three four five siz seven eight nine ten eleven twelve thirteen fourteen
-Enter new strings? Y/N (0): y
-y
-Please enter two strings to concatenate:
-String 1:seven men had seven wives, each wife has seven cats with seven lives
-
-The string you entered was:
-seven men had seven wives, each wife has seven cats with seven lives
-
-String 2: how many cats were there?
-
-The string you entered was:
-how many cats were there?
-The strings are too long. Please choose shorter strings.
-Resulting s_result:
-The result string is:
-
-seven men had seven wives, each wife has seven cats with seven lives
-Enter new strings? Y/N (0): y
-y
-Please enter two strings to concatenate:
-String 1:there once was a man from the sea
-
-The string you entered was:
-there once was a man from the sea
-
-String 2: who came to town.
-
-The string you entered was:
-who came to town.
-
-Resulting s_result:
-The result string is:
-
-there once was a man from the sea who came to town.
-Enter new strings? Y/N (0): 0
-0
-Ending the loop...
-
-
-Loop Ended. Program complete. Goodbye!
-
---------------------------------
-Process exited after 134.2 seconds with return value 0
-Press any key to continue . . .
 
 */

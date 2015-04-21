@@ -57,25 +57,25 @@ int main(void)
 		fgets(&s1[0],81,stdin);
 		
 		//check that the string 1 input is not too big
-		if(strlen(s1)>79)
-		{
+		if(strlen(s1)>80){
 			printf("Your first string is too long. Please begin again\n\n");
-			continue;
-		}//end if
+			continue;}//end if
 		
+		printf("Please enter another string: ");
 		fgets(&s2[0],41,stdin);
 		
 		//check that the string 2 input is not too big
-		if(strlen(s2)>39)
-		{
+		if(strlen(s2)>40){
 			printf("Your second string is too long. Please begin again\n\n");
-			continue;
-		}//end if
-
-		s_result[0] = *string_cat(&s1[0],&s2[0]);
+			continue;}//end if
 		
-		if(s_result != NULL)
-		{
+		if(strlen(s1)<80 && strlen(s2)<40){
+			s_result[0] = *string_cat(&s1[0],&s2[0]);
+		}//end if
+		else{
+			s_result[0] = '\0';}
+	
+		if(s_result[0] != NULL){
 			//print the resulting string
 			printf("\nThe result string is:\n\n%s",s1);
 		}//end if
@@ -86,7 +86,7 @@ int main(void)
 	
 		//prompt the user to decide continue or not
 		printf("Enter new strings? Y/N (0): ");
-		fgets(&buffer,80,stdin);
+		fgets(&buffer,2,stdin);
 		
 		//if the result is '0', 'n', or 'N'
 		if(buffer == '0' || buffer == 'n' || buffer == 'N')

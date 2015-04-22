@@ -44,6 +44,8 @@ int main(int argc, char* argv[])
 	size = atoi(argv[2]);
 	val = atoi(argv[3]);
 	
+	printf("\nType: %s. Size: %i\n\n",type, size);
+	
 	switch(*type)
 	{
 		case 'i':

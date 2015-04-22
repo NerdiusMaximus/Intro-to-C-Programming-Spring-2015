@@ -44,49 +44,32 @@ int main(void)
 	//declare variables
 	char s1[80];
 	char s2[40];
-	char buffer= 1;
-	char s_result[80] = {0};
+	char buffer;
 	
 	//enter a true loop
 	while(1)
 	{
+		int length = 0;
+		char c;
 		//prompt the user to input strings
-		fputs("Please enter two strings to concatenate:\n",stdout);
+		fputs("Please enter two strings to concatenate:\nFirst String: ",stdout);
 		
 		//get user input of string1 to stdin
-		fgets(&s1[0],81,stdin);
+		fgets(&s1[0],80,stdin);
+		printf("The string you entered was: %s\nSecond String: ",s1);
+		fgets(&s2[0],40,stdin);
+		printf("The second string you entered was: %s",s2);
 		
-		//check that the string 1 input is not too big
-		if(strlen(s1)>79)
-		{
-			printf("Your first string is too long. Please begin again\n\n");
-			continue;
-		}//end if
+		string_cat(&s1[0],&s2[0]);
 		
-		fgets(&s2[0],41,stdin);
-		
-		//check that the string 2 input is not too big
-		if(strlen(s2)>39)
-		{
-			printf("Your second string is too long. Please begin again\n\n");
-			continue;
-		}//end if
+		length = strlen(s1);
+		printf("\nThe length of the concatenated string is %i",length);
+		//print the resulting string
+		printf("\n\nThe result string is: %s",s1);
 
-		s_result[0] = *string_cat(&s1[0],&s2[0]);
-		
-		if(s_result != NULL)
-		{
-			//print the resulting string
-			printf("\nThe result string is:\n\n%s",s1);
-		}//end if
-		else
-		{
-			printf("The strings were too long once they were concatenated.\n\n");
-		}//end else
-	
 		//prompt the user to decide continue or not
-		printf("Enter new strings? Y/N (0): ");
-		fgets(&buffer,80,stdin);
+		printf("\nEnter new strings? Y/N (0): ");
+		fgets(&buffer,2,stdin);
 		
 		//if the result is '0', 'n', or 'N'
 		if(buffer == '0' || buffer == 'n' || buffer == 'N')
@@ -107,12 +90,15 @@ int main(void)
 
 char* string_cat(char* s1, char*s2)
 {
-	int s1_len=strlen(s1);
+	int s1_len = strlen(s1);
 	int s2_len = strlen(s2);
+	
+	printf("\ns1_len = %i\ns2_len = %i\n\n",s1_len,s2_len);
 
-	//check condition first
-	if(s1_len+s2_len > 80) //if the sum of the strings is over 80
+	//check condition first strlen(s) >= LEN1 || strlen(t) >= LEN1 || strlen(s) + strlen(t) > LEN1
+	if(s1_len >= 79 || s2_len >= 39 || s1_len + s2_len >= 79) //if the sum of the strings is over 80
 	{
+		printf("The strings are too long. Try again.\n");
 		return NULL;
 	}//end if
 	
@@ -120,10 +106,11 @@ char* string_cat(char* s1, char*s2)
 	for(int i=0; i<strlen(s2)+1;++i)
 	{
 		//append each element of string 2 to the end os string 1
-		s1[s1_len-1+i]= s2[i];	
+		s1[s1_len-1+i] = s2[i];
+		
 	}//end for
 	
-	return &s2[0];
+	return &s1[0];
 }//end string_cat
 
 /* output

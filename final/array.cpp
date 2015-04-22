@@ -27,44 +27,59 @@ The program should provide error checking for wrong number of entries.
 */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main(int argc, char* argv[])
 {
-	int *x_ptr;		// pointer to heap
-	char *type[1];
+	void *x_ptr;		// pointer to heap
+	char *type;
 	int size, val; //initiate array variables
-	
+		
 	if(argc != 4){
 		printf("Usage: array type size initValue\n");
 		exit(EXIT_FAILURE);
 	}
-	type[0] = argv[1];
-	size = atoi(argv[2]);	
+	
+	//assign the command line arguments to variables
+	type = argv[1];
+	size = atoi(argv[2]);
 	val = atoi(argv[3]);
 	
-	switch(t)
+	switch(*type)
 	{
 		case 'i':
-			x_ptr = (int *)malloc(size*sizeof(int));
+			x_ptr = (int *)malloc(size * sizeof(int));
+			printf("i\n");
+			//f_string = "%i\t";
+			break;
 		case 'f':
-			x_ptr = (float *)malloc(size*sizeof(float));
+			x_ptr = (float *)malloc(size * sizeof(float));
+			printf("f\n");
+			//f_string = "%g\t";
+			break;
 		case 'd':
-			x_ptr = (double *)malloc(size*sizeof(double);
+			x_ptr = (double *)malloc(size * sizeof(double));
+			printf("d\n");
+			//f_string = "%d\t";
+			break;
 		case 'c':
-			x_ptr = (char *)malloc(size*sizeof(char));
+			x_ptr = (char *)malloc(size * sizeof(char));
+			printf("c\n");
+			//f_string = "%c\t";
+			break;
 		default:
-			;
-	}
+			printf("Type not supported");
+			exit(1);
+			break;
+	}//end switch
+	
 	if(x_ptr == 0) {
 		printf("Error allocating Heap Memory\n");
 		exit(EXIT_FAILURE);
 	}//end if
-	
-	//initialize the array
-	
-	//print out the array
-	
+		
 	//deallocate the memory
-
+	free(x_ptr);
+	
 	return 0;
 }//end main

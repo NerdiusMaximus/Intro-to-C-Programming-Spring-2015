@@ -5,7 +5,6 @@ Final Examination
 
 Author: Michael T Lowry
 Date: 04/19/2015
-
 Part 3:
 
 3.   Write a program Array, that accepts arguments from the command line (argc, *argv[ ])as follows: (20%)
